@@ -3,6 +3,7 @@ package com.nothinglin.newqitalk.application;
 import android.app.Application;
 
 import cn.jpush.android.api.JPushInterface;
+import cn.jpush.im.android.api.JMessageClient;
 
 public class MyApplication extends Application {
 
@@ -13,5 +14,7 @@ public class MyApplication extends Application {
         //初始化JMessage SDK
         JPushInterface.init(this);
         JPushInterface.setDebugMode(true);
+        JMessageClient.init(this);
+
     }
 }

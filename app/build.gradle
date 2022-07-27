@@ -77,6 +77,11 @@ dependencies {
     api 'cn.jiguang.sdk.plugin:oppo:4.7.2'
     // 接入小米厂商
     api 'cn.jiguang.sdk.plugin:xiaomi:4.7.2'
+
+    api 'com.android.support:appcompat-v7:25.3.1'
+
+    //JMessage SDK
+    implementation 'cn.jiguang.sdk:jmessage:2.9.2'
 }
 
 apply plugin: 'com.huawei.agconnect'
