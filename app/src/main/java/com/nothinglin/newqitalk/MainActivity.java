@@ -10,24 +10,31 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
+import com.nothinglin.newqitalk.fragment.ContactFragment;
+import com.nothinglin.newqitalk.fragment.FindFregment;
+import com.nothinglin.newqitalk.fragment.MessageFragment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.jpush.im.android.api.JMessageClient;
 import cn.jpush.im.android.api.callback.GetAvatarBitmapCallback;
 import cn.jpush.im.android.api.model.UserInfo;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     //注册组件 --后面再获取对应的id
     //nav
@@ -74,10 +81,81 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //初始化数据
         initData();
 
+        //初始化点击事件监听器
+        initListen();
+
 
 
 
     }
+
+    private void initListen() {
+        //监听底部菜单栏是否被点击
+        ll_tab_1.setOnClickListener(this);
+        ll_tab_2.setOnClickListener(this);
+        ll_tab_3.setOnClickListener(this);
+
+        //底部菜单栏fragment切换监听
+        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                //设置底部菜单栏选中样式
+                switch (position) {
+                    case 0:
+                        img_tab_1.setImageDrawable(getResources().getDrawable(R.drawable.tab_1_1));
+                        img_tab_2.setImageDrawable(getResources().getDrawable(R.drawable.tab_2_8));
+                        img_tab_3.setImageDrawable(getResources().getDrawable(R.drawable.tab_3_8));
+                        break;
+                    case 1:
+                        img_tab_1.setImageDrawable(getResources().getDrawable(R.drawable.tab_1_8));
+                        img_tab_2.setImageDrawable(getResources().getDrawable(R.drawable.tab_2_1));
+                        img_tab_3.setImageDrawable(getResources().getDrawable(R.drawable.tab_3_8));
+                        break;
+                    case 2:
+                        img_tab_1.setImageDrawable(getResources().getDrawable(R.drawable.tab_1_8));
+                        img_tab_2.setImageDrawable(getResources().getDrawable(R.drawable.tab_2_8));
+                        img_tab_3.setImageDrawable(getResources().getDrawable(R.drawable.tab_3_1));
+                        break;
+                }
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+    }
+
+    //监听底部菜单栏哪个被点击了，如果被点击了设置对应fragment为主显示，也就是点击切换fragment
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.ll_main_tab_1:
+                mViewPager.setCurrentItem(0);
+                break;
+            case R.id.ll_main_tab_2:
+                mViewPager.setCurrentItem(1);
+                break;
+            case R.id.ll_main_tab_3:
+                mViewPager.setCurrentItem(2);
+                break;
+
+        }
+    }
+
+
+
+
+
+
+
+
 
     private void initData() {
         //初始化底部导航
@@ -99,6 +177,35 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //对弹窗列表的选项进行监听
         mNavigationView.setNavigationItemSelectedListener(this);
+
+        //设置底部菜单栏的首选样式(选中状态)
+        img_tab_1.setImageDrawable(getResources().getDrawable(R.drawable.tab_1_1));
+
+
+        //mData是封装界面fragment的容器，对应fragment对应底部操作栏的页面
+        mData = new ArrayList<Fragment>();
+        mData.add(new MessageFragment());
+        mData.add(new ContactFragment());
+        mData.add(new FindFregment());
+
+        //fragment页面适配器,对fragment进行封装
+        mAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
+            @NonNull
+            @Override
+            //获取对应fragment的位置
+            public Fragment getItem(int position) {
+                return mData.get(position);
+            }
+
+            @Override
+            //获取有多少个fragment
+            public int getCount() {
+                return mData.size();
+            }
+        };
+
+        //整合封装好的fragment反馈回主页面内容现实中
+        mViewPager.setAdapter(mAdapter);
 
 
     }
