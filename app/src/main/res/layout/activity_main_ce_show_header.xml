@@ -5,12 +5,7 @@
     android:layout_height="160dp"
     android:background="#fff1ac"
     android:gravity="bottom"
-    android:orientation="vertical"
-    android:paddingBottom="160dp"
-    android:paddingLeft="160dp"
-    android:paddingRight="160dp"
-    android:paddingTop="160dp"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+    android:orientation="vertical">
 
 <!--    <com.wzm.tasking.view.CircleImageView-->
 <!--        android:id="@+id/img_main_head"-->
@@ -26,13 +21,13 @@
         android:paddingTop="2dp"
         android:text="User Name"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="16sp" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/tv_main_sign"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Good good study, day day up"
-        android:textSize="14sp" />
+        android:textSize="16sp" />
 
 </LinearLayout>
