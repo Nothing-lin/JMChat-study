@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".MainActivity">
+
+    <!--  页面标题文字  -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#fff1ac"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="消息"
+            app:titleTextColor="#ffffff" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!--  页面主要展示内容  -->
+    <include layout="@layout/activity_main_content" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
