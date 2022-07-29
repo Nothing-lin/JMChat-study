@@ -23,6 +23,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
+import com.nothinglin.newqitalk.activity.LoginActivity;
 import com.nothinglin.newqitalk.fragment.ContactFragment;
 import com.nothinglin.newqitalk.fragment.FindFregment;
 import com.nothinglin.newqitalk.fragment.MessageFragment;
@@ -288,8 +289,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
+
+
+
+    //抽屉窗口列表点击监听事件,对应的id资源在res中menu下
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        return false;
+        Intent intent = new Intent();
+        switch (item.getItemId()){
+
+            //用户退出账号登录
+            case R.id.nav_8:
+                JMessageClient.logout();
+                intent.setClass(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+        }
+
+
+
+        return true;
     }
+
+
+
 }
