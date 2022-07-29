@@ -97,6 +97,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ll_tab_3.setOnClickListener(this);
 
         //底部菜单栏fragment切换监听
+        //配合下面的onClick(View v)对底部导航进行切换
         mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {

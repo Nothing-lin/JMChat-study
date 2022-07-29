@@ -82,6 +82,8 @@ dependencies {
 
     //JMessage SDK
     implementation 'cn.jiguang.sdk:jmessage:2.9.2'
+
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 }
 
 apply plugin: 'com.huawei.agconnect'

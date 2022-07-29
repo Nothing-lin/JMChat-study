@@ -1,11 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#eeeeee"
+    android:orientation="vertical"
+    android:paddingBottom="15dp">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <!--  群组模块  -->
+    <LinearLayout
+        android:id="@+id/ll_fg2_1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="这是联系人界面"/>
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="1dp"
+        android:background="@drawable/click_bg"
+        android:clickable="true"
+        android:orientation="horizontal">
 
-</FrameLayout>
+        <FrameLayout
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="10dp">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/f2_group" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="G"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:text="群组"
+            android:textSize="18sp"
+            android:textStyle="italic" />
+    </LinearLayout>
+
+    <!--  群组下拉刷新模块  -->
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/srl_fg2_g"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/colorWhite"
+        android:paddingBottom="5dp">
+
+        <ListView
+            android:id="@+id/lv_fg2_g"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:dividerHeight="0.5dp" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+    <!--好友模块-->
+    <LinearLayout
+        android:id="@+id/ll_fg2_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="1dp"
+        android:background="@drawable/click_bg"
+        android:clickable="true"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="10dp">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/f2_friend" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="F"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:text="好友"
+            android:textSize="18sp"
+            android:textStyle="italic" />
+    </LinearLayout>
+    <!--好友列表下拉刷新-->
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/srl_fg2_f"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/colorWhite"
+        android:paddingBottom="5dp">
+
+        <ListView
+            android:id="@+id/lv_fg2_f"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:dividerHeight="0.5dp" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+</LinearLayout>
