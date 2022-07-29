@@ -62,7 +62,7 @@
 
         <!--页面注册  必须注册，否则无法显示-->
         <activity
-            android:name=".activity.LoginActivity"
+            android:name=".activity.LaunchActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -72,6 +72,7 @@
         </activity>
 
         <activity android:name=".MainActivity"/>
+        <activity android:name=".activity.LoginActivity"/>
 
 
 
