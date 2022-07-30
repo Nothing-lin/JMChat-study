@@ -27,6 +27,7 @@ import com.nothinglin.newqitalk.activity.LoginActivity;
 import com.nothinglin.newqitalk.fragment.ContactFragment;
 import com.nothinglin.newqitalk.fragment.FindFregment;
 import com.nothinglin.newqitalk.fragment.MessageFragment;
+import com.nothinglin.newqitalk.view.CircleImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     //注册组件 --后面再获取对应的id
     //nav
-    //private CircleImageView img_header;
+    private CircleImageView img_header;
     private TextView tv_username;
     private TextView tv_sign;
     private LinearLayout ll_night;
@@ -238,19 +239,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
 
 
-            /**
-             * 头像获取步骤，暂时不做这个
-             */
-//            userInfo.getAvatarBitmap(new GetAvatarBitmapCallback() {
-//                @Override
-//                public void gotResult(int i, String s, Bitmap bitmap) {
-//                    if (bitmap != null) {
-//                        img_header.setImageBitmap(bitmap);
-//                    } else {
-//                        img_header.setImageResource(R.drawable.ic_header);
-//                    }
-//                }
-//            });
+
+            userInfo.getAvatarBitmap(new GetAvatarBitmapCallback() {
+                @Override
+                public void gotResult(int i, String s, Bitmap bitmap) {
+                    if (bitmap != null) {
+                        img_header.setImageBitmap(bitmap);
+                    } else {
+                        img_header.setImageResource(R.drawable.ic_header);
+                    }
+                }
+            });
 
         }catch(Exception e) {
             System.out.println("获取用户信息时出错："+e);
@@ -275,8 +274,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tv_tab_2 = (TextView) findViewById(R.id.tv_main_tab_2);
         tv_tab_3 = (TextView) findViewById(R.id.tv_main_tab_3);
         //nav 侧边弹窗
-        View headerView = mNavigationView.getHeaderView(0);
-//        img_header = (CircleImageView) headerView.findViewById(R.id.img_main_head);
+        View headerView = mNavigationView.getHeaderView(0);//抽屉窗口的初始状态为闭合
+        img_header = (CircleImageView) headerView.findViewById(R.id.img_main_head);
         tv_username = (TextView) headerView.findViewById(R.id.tv_main_username);
         tv_sign = (TextView) headerView.findViewById(R.id.tv_main_sign);
 
