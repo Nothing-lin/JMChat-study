@@ -4,7 +4,25 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="这是消息界面"/>
+        android:id="@+id/tv_fg1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="F_1" />
+
+    <!--  消息界面的下拉刷新  -->
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/srl_fg1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--    存储消息列表的 list视图    -->
+        <ListView
+            android:id="@+id/lv_fg1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
 </FrameLayout>
