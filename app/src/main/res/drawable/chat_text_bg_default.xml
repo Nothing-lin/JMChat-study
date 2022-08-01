@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+
+<!--  每条消息的文字背景样式  -->
+
+    <corners android:radius="10dp" />
+
+    <gradient
+        android:endColor="@color/colorWhite"
+        android:startColor="@color/colorWhite" />
+
+    <stroke
+        android:width="0.5dp"
+        android:color="#777777" />
+
+</shape>

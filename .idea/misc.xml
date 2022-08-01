@@ -9,8 +9,16 @@
         <entry key="..\:/demo/JMChat-study/app/src/main/res/drawable/bt_f.xml" value="0.108" />
         <entry key="..\:/demo/JMChat-study/app/src/main/res/drawable/bt_s.xml" value="0.108" />
         <entry key="..\:/demo/JMChat-study/app/src/main/res/drawable/bt_selector.xml" value="0.108" />
+        <entry key="..\:/demo/JMChat-study/app/src/main/res/drawable/chat_bg.xml" value="0.159" />
+        <entry key="..\:/demo/JMChat-study/app/src/main/res/drawable/chat_bg2.xml" value="0.159" />
+        <entry key="..\:/demo/JMChat-study/app/src/main/res/drawable/chat_bg3.xml" value="0.159" />
+        <entry key="..\:/demo/JMChat-study/app/src/main/res/drawable/chat_bg_default.xml" value="0.159" />
         <entry key="..\:/demo/JMChat-study/app/src/main/res/drawable/click_bg.xml" value="0.1195" />
         <entry key="..\:/demo/JMChat-study/app/src/main/res/drawable/ic_launcher_background.xml" value="0.108" />
+        <entry key="..\:/demo/JMChat-study/app/src/main/res/layout/activity_chat.xml" value="0.264" />
+        <entry key="..\:/demo/JMChat-study/app/src/main/res/layout/activity_chat_item_he.xml" value="0.12588652482269502" />
+        <entry key="..\:/demo/JMChat-study/app/src/main/res/layout/activity_chat_item_him.xml" value="0.25885416666666666" />
+        <entry key="..\:/demo/JMChat-study/app/src/main/res/layout/activity_chat_item_me.xml" value="0.25885416666666666" />
         <entry key="..\:/demo/JMChat-study/app/src/main/res/layout/activity_login_login.xml" value="0.25" />
         <entry key="..\:/demo/JMChat-study/app/src/main/res/layout/activity_login_main_switch.xml" value="0.25" />
         <entry key="..\:/demo/JMChat-study/app/src/main/res/layout/activity_login_register.xml" value="0.1" />

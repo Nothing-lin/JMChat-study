@@ -25,3 +25,4 @@ dependencyResolutionManagement {
 rootProject.name = "NewQiTalk"
 include ':app'
 include ':qq_emoji'
+include ':gallerypick'

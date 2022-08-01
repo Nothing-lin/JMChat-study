@@ -1,10 +1,15 @@
 package com.nothinglin.newqitalk.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +20,7 @@ import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.nothinglin.newqitalk.R;
+import com.nothinglin.newqitalk.activity.SingleChatActivity;
 import com.nothinglin.newqitalk.adapter.ConversationAdapter;
 
 import java.util.ArrayList;
@@ -22,6 +28,8 @@ import java.util.List;
 
 import cn.jpush.im.android.api.JMessageClient;
 import cn.jpush.im.android.api.model.Conversation;
+import cn.jpush.im.android.api.model.GroupInfo;
+import cn.jpush.im.android.api.model.UserInfo;
 
 public class MessageFragment extends Fragment {
 
@@ -100,6 +108,42 @@ public class MessageFragment extends Fragment {
                         mSRL.setRefreshing(false);
                     }
                 },500);
+
+            }
+        });
+
+
+        //消息列表item点击事件
+        mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                mData.get(position).resetUnreadCount();//点击时候设置该条信息为已读
+
+                //动态刷新消息列表的内容
+                mAdapter.notifyDataSetChanged();
+
+                Intent i = new Intent();
+                //传递数据到SingleChatActivity.class页面
+                switch (mData.get(position).getType()){
+                    case single:
+                        //获取目标用户信息
+                        UserInfo userInfo = (UserInfo) mData.get(position).getTargetInfo();
+
+                        i.putExtra("username",userInfo.getUserName());
+                        if (!TextUtils.isEmpty(userInfo.getNotename())) {
+                            i.putExtra("name", userInfo.getNotename());
+                        } else if (!TextUtils.isEmpty(userInfo.getNickname())) {
+                            i.putExtra("name", userInfo.getNickname());
+                        } else {
+                            i.putExtra("name", userInfo.getUserName());
+                        }
+
+                        i.setClass(getActivity(), SingleChatActivity.class);
+                        startActivity(i);
+                        System.out.println("kk");
+                        break;
+                }
 
             }
         });

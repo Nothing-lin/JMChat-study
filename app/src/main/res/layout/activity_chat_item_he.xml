@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:orientation="vertical">
+
+    <!--  消息日期  -->
+    <TextView
+        android:id="@+id/tv_chat_item_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="2017/1/1 00:00:00"
+        android:textColor="#bbbbbb"
+        android:textSize="12sp" />
+
+    <!--  消息主题内容  -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+
+        <!--    用户的头像和昵称的线性布局    -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:orientation="vertical">
+
+            <!--头像-->
+            <com.nothinglin.newqitalk.view.CircleImageView
+                android:id="@+id/img_chat_item_user"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center" />
+
+            <!--昵称-->
+            <TextView
+                android:id="@+id/tv_chat_item_user"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="User"
+                android:textColor="#333333"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <!--    消息内容    -->
+        <FrameLayout
+            android:id="@+id/fl_chat_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginRight="40dp"
+            android:background="@drawable/chat_text_bg_default"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/tv_chat_item_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#333333"
+                android:textSize="15sp" />
+
+            <!--     备用图片显示，主体是发图片那么就隐藏textview,显示imageview       -->
+            <ImageView
+                android:id="@+id/img_chat_item_img"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/img_chat_item_img2"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:visibility="gone" />
+        </FrameLayout>
+    </LinearLayout>
+
+</LinearLayout>

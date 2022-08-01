@@ -12,4 +12,9 @@
     <string name="register">注册</string>
     <string name="register_success">注册成功</string>
     <string name="register_fail">注册失败</string>
+
+
+    <string name="no_chat">还没有聊天</string>
+    <string name="change_isRead">转变已读</string>
+    <string name="delete_message">删除聊天</string>
 </resources>
