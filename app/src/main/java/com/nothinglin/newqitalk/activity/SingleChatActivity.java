@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.jpush.im.android.api.JMessageClient;
+import cn.jpush.im.android.api.enums.ConversationType;
+import cn.jpush.im.android.api.event.MessageEvent;
 import cn.jpush.im.android.api.model.Conversation;
 import cn.jpush.im.android.api.model.Message;
 
@@ -109,5 +111,65 @@ public class SingleChatActivity extends AppCompatActivity {
         mList = (ListView) findViewById(R.id.lv_chat);
         mEt_input = (EditText) findViewById(R.id.et_chat_input);
         mBt_send = (Button) findViewById(R.id.bt_chat_send);
+    }
+
+
+    //程序正常启动时：onCreate()->onStart()->onResume();
+    // App用到一半 有事Home键切出去了 在回来时调onResume
+    //应该是监听消息内容的变化
+    @Override
+    public void onResume() {
+        super.onResume();
+        //当sdk收到某些后台下发的数据，或者发生了某些需要上层关注的事件时，sdk会上抛事件对象通知给上层，例如，在线消息事件、会话刷新事件、用户下线事件等。
+        JMessageClient.registerEventReceiver(this);
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Conversation conversation = JMessageClient.getSingleConversation(username,null);
+        //如果暂停单聊的页面是存在未读消息，那么设置为已读
+        if (conversation != null){
+            conversation.resetUnreadCount();
+        }
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //退出单聊界面时，调用极光服务器说明已经退出聊天
+        JMessageClient.exitConversation();
+        //取消消息接收的监听
+        JMessageClient.unRegisterEventReceiver(this);
+        //结束当前页面
+        finish();
+    }
+
+    public void onEvent(MessageEvent event){
+        //注册消息事务
+        Message message = event.getMessage();
+        //如果当前的消息不属于单聊的话直接结束
+        if (message.getTargetType() != ConversationType.single){
+            return;
+        }
+
+        //如果消息不是目标对象发来的话那么就结束
+        if (!message.getFromUser().getUserName().equals(username)){
+            return;
+        }
+        mData.add(message);
+        //热加载消息界面
+        mAdapter = new MessageAdapter(this,mData,mListener);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mList.setAdapter(mAdapter);//热显示聊天界面的消息列表
+                mAdapter.notifyDataSetChanged();
+                mList.setSelection(mAdapter.getCount());
+            }
+        });
+
     }
 }
